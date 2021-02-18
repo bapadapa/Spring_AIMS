@@ -1,3 +1,4 @@
 spring:
   jpa:
+#    sql 사용시 쿼리문을 보여줌.
     show-sql: true
