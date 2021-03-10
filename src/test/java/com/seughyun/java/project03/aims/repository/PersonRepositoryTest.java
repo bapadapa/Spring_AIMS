@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +38,17 @@ class PersonRepositoryTest  {
     }
 
     @Test
+    void ConstrictorTest(){
+        Person person = new Person("justin",10,"A");
+
+
+    }
+
+    @Test
     void hashCodeAndEquals(){
         Person person1 =  new Person("martin", 10,"A");
-        Person person2  = new Person("martin", 10,"A");
+        Person person2  = new Person("martin", 10,"B");
+        //Person person2  = new Person("martin", 10,"A");
 
         System.out.println(person1.equals(person2));
         System.out.println(person1.hashCode());

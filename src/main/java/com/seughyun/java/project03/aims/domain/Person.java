@@ -54,7 +54,7 @@ public class Person {
 
     private String address;
 
-    private LocalDateTime BirthDay;
+    private LocalDate BirthDay;
 
     private String job;
 
@@ -62,8 +62,12 @@ public class Person {
     @ToString.Exclude
     private String phoneNumber;
 
+
     @OneToOne
     private Block block;
+
+
+
 
 
 /*    public boolean equals(Object object){
