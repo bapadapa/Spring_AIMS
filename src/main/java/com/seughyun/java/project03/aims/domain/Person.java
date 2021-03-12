@@ -3,10 +3,7 @@ package com.seughyun.java.project03.aims.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -62,8 +59,13 @@ public class Person {
     @ToString.Exclude
     private String phoneNumber;
 
+    //cascade == 종속 --> 연결된 블록 또한 업데이드 시켜줌. 아래와 같이 선택적으로 업데이트 할 수 있다.
+    //@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.REMOVE})
+    // CascadeType.ALL로 하면 모든 업데이트를 해준다.
+    // FetchType.EAGER을 이용하면 LEFT JOIN을 함. 이것에 Optional = false ( false로 하면 항상 필요하다는 뜻 ( Not NULL) ) 를 이용하면, INNER JOIN으로 변경됨.
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch =FetchType.LAZY)
+    @ToString.Exclude
     private Block block;
 
 
